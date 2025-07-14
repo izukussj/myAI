@@ -1,24 +1,47 @@
-import React from "react";
+import PropTypes from "prop-types";
+import CmdResponse from "./CmdResponse";
+import ApiResponse from "./ApiResponse";
+import BasicResponse from "./BasicResponse";
 
-class ResultComponent extends React.Component {
-  render() {
-    const { type, content } = this.props;
-    switch (type) {
-      case "windows":
-        return <CmdResponse {...content} />;
-      case "api":
-        switch (this.props.apiName) {
-          case "Indeed Scraper":
-            return <IndeedResponse {...content} />;
-          default:
-            return <div>API non prise en charge.</div>;
-        }
-      case "basic":
-        return <BasicResponse {...content} />;
-      default:
-        return <div>Type de réponse inconnu.</div>;
-    }
+const Result = ({ type, content, apiName, isDeveloperMode }) => {
+  // Gestion des types de réponses
+  switch (type) {
+    case "windows":
+      return (
+        <CmdResponse
+          dangerLevel={content.dangerLevel}
+          description={content.description}
+          shellCode={content.code}
+          isDeveloperMode={isDeveloperMode}
+        />
+      );
+
+    case "api":
+      return (
+        <ApiResponse
+          apiName={apiName}
+          response={content.response}
+        />
+      );
+
+    case "basic":
+      return <BasicResponse content={content} />;
+
+    default:
+      return <p>Type de réponse inconnu.</p>;
   }
-}
+};
+Result.propTypes = {
+  type: PropTypes.string.isRequired,
+  content: PropTypes.shape({
+    dangerLevel: PropTypes.number,
+    description: PropTypes.string,
+    code: PropTypes.string,
+    response: PropTypes.string,
+  }).isRequired,
+  apiName: PropTypes.string,
+  isDeveloperMode: PropTypes.bool,
+};
 
-export default ResultComponent;
+export default Result;
+

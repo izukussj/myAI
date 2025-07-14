@@ -25,4 +25,5 @@ tauri = { version = "2", features = [] }
 tauri-plugin-log = "2.0.0-rc"
 reqwest = { version = "0.11", features = ["json"] }
 tokio = { version = "1", features = ["full"] }
-
+thiserror = "1.0"
+serde_yaml = "0.9"

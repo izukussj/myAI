@@ -1,0 +1,38 @@
+{
+    "openai": {
+      "base_url": "https://api.openai.com/v1",
+      "token": "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",
+      "endpoints": {
+        "completion": {
+          "method": "POST",
+          "path": "/chat/completions"
+        }
+      }
+    },
+    "indeed": {
+      "base_url": "https://api.indeed.com/v1",
+      "token": "your-indeed-api-key",
+      "endpoints": {
+        "jobs": {
+          "method": "GET",
+          "path": "/jobs"
+        },
+        "apply": {
+          "method": "POST",
+          "path": "/apply"
+        }
+      }
+    },
+    "nbapi": {
+      "base_url": "http://127.0.0.1:8000/",
+      "token": "your-indeed-api-key",
+      "endpoints": {
+        "resultchart": {
+          "method": "POST",
+          "path": "/resultchart"
+        }
+      }
+    }
+
+  }
+  
