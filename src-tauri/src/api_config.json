@@ -1,7 +1,7 @@
 {
     "openai": {
       "base_url": "https://api.openai.com/v1",
-      "token": "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",
+      "token": "",
       "endpoints": {
         "completion": {
           "method": "POST",
